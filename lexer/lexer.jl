@@ -54,8 +54,6 @@ symbol_lookup_table = Dict(
     '+' => PLUS,
     '/' => SLASH,
     '*' => ASTERISK,
-    '<' => LT,
-    '>' => GT,
     ',' => COMMA,
     ';' => SEMICOLON,
     '(' => LPAREN,
@@ -100,7 +98,21 @@ function nexttoken(lx::MonkeyLexer)::Token
             readchar(lx)
         else
             tok = Token(BANG, lx.ch, lx.line, lx.linepos)
-        end 
+        end
+    elseif lx.ch == '<'
+        if charahead(lx) == '='
+            tok = Token(LTE, "<=", lx.line, lx.linepos)
+            readchar(lx)
+        else
+            tok = Token(LT, lx.ch, lx.line, lx.linepos)
+        end
+    elseif lx.ch == '>'
+        if charahead(lx) == '='
+            tok = Token(GTE, ">=", lx.line, lx.linepos)
+            readchar(lx)
+        else
+            tok = Token(GT, lx.ch, lx.line, lx.linepos)
+        end
     else
         if isletter(lx.ch)
             linepos = lx.linepos
