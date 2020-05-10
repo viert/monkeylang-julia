@@ -1,4 +1,6 @@
 {
-  "julia.format.indent": 2,
-  "julia.format.indents": true
+  "juliaFormatter.indent": 2,
+  "[julia]": {
+    "editor.defaultFormatter": "singularitti.vscode-julia-formatter"
+  }
 }

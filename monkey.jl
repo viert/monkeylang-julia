@@ -1,11 +1,6 @@
-include("lexer/lexer.jl")
-using .Lexer
+include("monkey/monkey.jl")
+using .Monkey
 
 data = String(read("program.monkey"))
-lexer = MonkeyLexer(data)
-
-while true
-    tok = nexttoken(lexer)
-    println(tok)
-    if tok.type == EOF break end
-end
+lexer = Lexer(data)
+parser = Parser(lexer)
