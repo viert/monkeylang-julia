@@ -1,7 +1,4 @@
 {
-  "juliaFormatter.indent": 2,
-  "[julia]": {
-    "editor.defaultFormatter": "singularitti.vscode-julia-formatter",
-    "files.saveConflictResolution": "overwriteFileOnDisk"
-  }
+  "julia.format.indent": 4,
+  "julia.format.indents": true
 }
